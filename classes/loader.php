@@ -206,5 +206,16 @@ class Loader
 	{
 		throw new \Exception(__class__.'::'.__FUNCTION__.'() is not yet implemented');
 	}
+	
+	/**
+	 * get code to load lesscss
+	 * 
+	 * @return string
+	 * @link http://lesscss.org/
+	 */
+	public static function lesscss()
+	{
+		return \Asset::js(\Config::get('lesscss'));
+	}
 
 }

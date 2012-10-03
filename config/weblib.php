@@ -71,6 +71,7 @@ return array(
 		'json_parse'       => 'https://raw.github.com/douglascrockford/JSON-js/master/json_parse.js',
 		'json_parse_state' => 'https://raw.github.com/douglascrockford/JSON-js/master/json_parse_state.js',
 	),
+	'lesscss'           => 'http://lesscss.googlecode.com/files/less-1.3.0.min.js',
 	'requirejs'         => 'http://requirejs.org/docs/release/2.0.6/minified/require.js',
 	'requirejs-plugins' => array(
 		'text'     => 'https://raw.github.com/requirejs/text/latest/text.js',
