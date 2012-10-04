@@ -30,4 +30,4 @@
  * @license     http://opensource.org/licenses/MIT MIT License
  */
 \Autoloader::add_namespace('evidev\\fuelphp\\weblib', __DIR__.'/classes/');
-\Config::load('weblib');
+\Config::load('weblib', true);
