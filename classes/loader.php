@@ -55,7 +55,7 @@ class Loader
 	 */
 	public static function jquery()
 	{
-		return \Asset::js(\Config::get('jquery'));
+		return \Asset::js(\Config::get('weblib.jquery'));
 	}
 
 	/**
@@ -66,7 +66,7 @@ class Loader
 	 */
 	public static function jquery_ui()
 	{
-		return \Asset::js(\Config::get('jquery-ui-base-uri').'/'.\Config::get('jquery-ui-file'));
+		return \Asset::js(\Config::get('weblib.jquery-ui-base-uri').'/'.\Config::get('weblib.jquery-ui-file'));
 	}
 
 	/**
@@ -79,9 +79,9 @@ class Loader
 	public static function jquery_ui_theme($theme = self::LOAD_ALL)
 	{
 		$theme          = strtolower($theme);
-		$theme_base_uri = \Config::get('jquery-ui-base-uri').'/themes/';
-		$themes         = \Config::get('jquery-ui-themes');
-		$file           = \Config::get('jquery-ui-theme-file');
+		$theme_base_uri = \Config::get('weblib.jquery-ui-base-uri').'/themes/';
+		$themes         = \Config::get('weblib.jquery-ui-themes');
+		$file           = \Config::get('weblib.jquery-ui-theme-file');
 		if ($theme !== self::LOAD_ALL)
 		{
 			if (!in_array($theme, $themes))
@@ -106,7 +106,7 @@ class Loader
 	 */
 	public static function backbonejs()
 	{
-		return \Asset::js(\Config::get('backbonejs'));
+		return \Asset::js(\Config::get('weblib.backbonejs'));
 	}
 
 	/**
@@ -117,7 +117,7 @@ class Loader
 	 */
 	public static function requirejs()
 	{
-		return \Asset::js(\Config::get('requirejs'));
+		return \Asset::js(\Config::get('weblib.requirejs'));
 	}
 
 	/**
@@ -130,7 +130,7 @@ class Loader
 	public static function requirejs_plugin($plugin = self::LOAD_ALL)
 	{
 		$plugin  = strtolower($plugin);
-		$plugins = \Config::get('requirejs-plugins');
+		$plugins = \Config::get('weblib.requirejs-plugins');
 		if ($plugin !== self::LOAD_ALL)
 		{
 			if (!array_key_exists($plugin, $plugins))
@@ -155,7 +155,7 @@ class Loader
 	 */
 	public static function underscorejs()
 	{
-		return \Asset::js(\Config::get('underscorejs'));
+		return \Asset::js(\Config::get('weblib.underscorejs'));
 	}
 
 	/**
@@ -166,7 +166,7 @@ class Loader
 	 */
 	public static function zeptojs()
 	{
-		return \Asset::js(\Config::get('zeptojs'));
+		return \Asset::js(\Config::get('weblib.zeptojs'));
 	}
 
 	/**
@@ -179,7 +179,7 @@ class Loader
 	public static function jsonjs_script($script = self::LOAD_ALL)
 	{
 		$script  = strtolower($script);
-		$scripts = \Config::get('json-js');
+		$scripts = \Config::get('weblib.json-js');
 		if ($script !== self::LOAD_ALL)
 		{
 			if (!array_key_exists($script, $scripts))
@@ -215,7 +215,7 @@ class Loader
 	 */
 	public static function lesscss()
 	{
-		return \Asset::js(\Config::get('lesscss'));
+		return \Asset::js(\Config::get('weblib.lesscss'));
 	}
 
 }
