@@ -48,7 +48,7 @@ class Loader
 	const LOAD_ALL = 'all';
 
 	/**
-	 * get code to load JQuery
+	 * get code to load last version of JQuery
 	 * 
 	 * @return string
 	 * @link http://jquery.com/
@@ -61,25 +61,33 @@ class Loader
 	/**
 	 * get code to load JQuery UI
 	 * 
+	 * @param  string	$version	one of the version number from \Config::get('weblib.jquery-ui-versions')
 	 * @return string
 	 * @link http://jqueryui.com/
 	 */
-	public static function jquery_ui()
+	public static function jquery_ui($version = null)
 	{
-		return \Asset::js(\Config::get('weblib.jquery-ui-base-uri').'/'.\Config::get('weblib.jquery-ui-file'));
+		$version = ! is_null($version) 
+			   && in_array($version, \Config::get('weblib.jquery-ui-versions')) ?
+				$version : \Config::get('weblib.jquery-ui-default-version');
+		return \Asset::js(\Config::get('weblib.jquery-ui-base-uri').$version.'/'.\Config::get('weblib.jquery-ui-file'));
 	}
 
 	/**
 	 * get code to load JQuery UI themes
 	 * 
-	 * @param  string	the name of the theme or Loader::LOAD_ALL to load all themes
+	 * @param  string	$theme		the name of the theme or Loader::LOAD_ALL to load all themes
+	 * @param  string	$version	one of the version number from \Config::get('weblib.jquery-ui-versions')
 	 * @return string
 	 * @link http://jqueryui.com/themeroller/
 	 */
-	public static function jquery_ui_theme($theme = self::LOAD_ALL)
+	public static function jquery_ui_theme($theme = self::LOAD_ALL, $version = null)
 	{
+		$version = ! is_null($version) 
+			   && in_array($version, \Config::get('weblib.jquery-ui-versions')) ?
+				$version : \Config::get('weblib.jquery-ui-default-version');
 		$theme          = strtolower($theme);
-		$theme_base_uri = \Config::get('weblib.jquery-ui-base-uri').'/themes/';
+		$theme_base_uri = \Config::get('weblib.jquery-ui-base-uri').$version.'/themes/';
 		$themes         = \Config::get('weblib.jquery-ui-themes');
 		$file           = \Config::get('weblib.jquery-ui-theme-file');
 		if ($theme !== self::LOAD_ALL)
@@ -123,7 +131,7 @@ class Loader
 	/**
 	 * get code to load RequireJS plugins
 	 * 
-	 * @param  string	the name of the plugin or Loader::LOAD_ALL to load all plugins
+	 * @param  string	$plugin		the name of the plugin or Loader::LOAD_ALL to load all plugins
 	 * @return string
 	 * @link http://requirejs.org/
 	 */
@@ -172,7 +180,7 @@ class Loader
 	/**
 	 * get code to load JSON-js plugins
 	 * 
-	 * @param  string	the name of the script or Loader::LOAD_ALL to load all scripts
+	 * @param  string	$script		the name of the script or Loader::LOAD_ALL to load all scripts
 	 * @return string
 	 * @link https://github.com/douglascrockford/JSON-js
 	 */

@@ -63,6 +63,18 @@ class Loader extends \Fuel\Core\TestCase
 		    '<script type="text/javascript" src="http://code.jquery.com/ui/1.8.24/jquery-ui.min.js"></script>',
 		    trim(\evidev\fuelphp\weblib\Loader::jquery_ui())
 		);
+		$this->assertEquals(
+		    '<script type="text/javascript" src="http://code.jquery.com/ui/1.8.24/jquery-ui.min.js"></script>',
+		    trim(\evidev\fuelphp\weblib\Loader::jquery_ui('1.8.24'))
+		);
+		$this->assertEquals(
+		    '<script type="text/javascript" src="http://code.jquery.com/ui/1.8.24/jquery-ui.min.js"></script>',
+		    trim(\evidev\fuelphp\weblib\Loader::jquery_ui('1.8.23'))
+		);
+		$this->assertEquals(
+		    '<script type="text/javascript" src="http://code.jquery.com/ui/1.9.0/jquery-ui.min.js"></script>',
+		    trim(\evidev\fuelphp\weblib\Loader::jquery_ui('1.9.0'))
+		);		
 	}
 
 	/**
@@ -74,6 +86,18 @@ class Loader extends \Fuel\Core\TestCase
 		    '<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/1.8.24/themes/base/jquery-ui.css" />',
 		    trim(\evidev\fuelphp\weblib\Loader::jquery_ui_theme('base'))
 		);
+		$this->assertEquals(
+		    '<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/1.8.24/themes/base/jquery-ui.css" />',
+		    trim(\evidev\fuelphp\weblib\Loader::jquery_ui_theme('base', '1.8.24'))
+		);
+		$this->assertEquals(
+		    '<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/1.8.24/themes/base/jquery-ui.css" />',
+		    trim(\evidev\fuelphp\weblib\Loader::jquery_ui_theme('base', '1.8.23'))
+		);
+		$this->assertEquals(
+		    '<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />',
+		    trim(\evidev\fuelphp\weblib\Loader::jquery_ui_theme('base', '1.9.0'))
+		);
 		$this->assertEmpty(
 		    \evidev\fuelphp\weblib\Loader::jquery_ui_theme('wrong_theme')
 		);
@@ -84,6 +108,10 @@ class Loader extends \Fuel\Core\TestCase
 		$this->assertEquals(
 		    $this->_get_all_jquery_ui_themes(),
 		    \evidev\fuelphp\weblib\Loader::jquery_ui_theme()
+		);
+		$this->assertEquals(
+		    $this->_get_all_jquery_ui_themes('1.9.0'),
+		    \evidev\fuelphp\weblib\Loader::jquery_ui_theme(\evidev\fuelphp\weblib\Loader::LOAD_ALL, '1.9.0')
 		);
 	}
 
@@ -201,34 +229,34 @@ class Loader extends \Fuel\Core\TestCase
 	 * 
 	 * @return string	returns the html code
 	 */
-	private function _get_all_jquery_ui_themes()
+	private function _get_all_jquery_ui_themes($version = '1.8.24')
 	{
 		return 
-'	<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/1.8.24/themes/base/jquery-ui.css" />
-	<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/1.8.24/themes/black-tie/jquery-ui.css" />
-	<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/1.8.24/themes/blitzer/jquery-ui.css" />
-	<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/1.8.24/themes/cupertino/jquery-ui.css" />
-	<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/1.8.24/themes/dark-hive/jquery-ui.css" />
-	<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/1.8.24/themes/dot-luv/jquery-ui.css" />
-	<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/1.8.24/themes/eggplant/jquery-ui.css" />
-	<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/1.8.24/themes/excite-bike/jquery-ui.css" />
-	<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/1.8.24/themes/flick/jquery-ui.css" />
-	<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/1.8.24/themes/hot-sneaks/jquery-ui.css" />
-	<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/1.8.24/themes/humanity/jquery-ui.css" />
-	<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/1.8.24/themes/le-frog/jquery-ui.css" />
-	<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/1.8.24/themes/mint-choc/jquery-ui.css" />
-	<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/1.8.24/themes/overcast/jquery-ui.css" />
-	<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/1.8.24/themes/pepper-grinder/jquery-ui.css" />
-	<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/1.8.24/themes/redmond/jquery-ui.css" />
-	<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/1.8.24/themes/smoothness/jquery-ui.css" />
-	<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/1.8.24/themes/south-street/jquery-ui.css" />
-	<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/1.8.24/themes/start/jquery-ui.css" />
-	<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/1.8.24/themes/sunny/jquery-ui.css" />
-	<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/1.8.24/themes/swanky-purse/jquery-ui.css" />
-	<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/1.8.24/themes/trontastic/jquery-ui.css" />
-	<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/1.8.24/themes/ui-darkness/jquery-ui.css" />
-	<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/1.8.24/themes/ui-lightness/jquery-ui.css" />
-	<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/1.8.24/themes/vader/jquery-ui.css" />
+'	<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/'.$version.'/themes/base/jquery-ui.css" />
+	<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/'.$version.'/themes/black-tie/jquery-ui.css" />
+	<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/'.$version.'/themes/blitzer/jquery-ui.css" />
+	<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/'.$version.'/themes/cupertino/jquery-ui.css" />
+	<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/'.$version.'/themes/dark-hive/jquery-ui.css" />
+	<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/'.$version.'/themes/dot-luv/jquery-ui.css" />
+	<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/'.$version.'/themes/eggplant/jquery-ui.css" />
+	<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/'.$version.'/themes/excite-bike/jquery-ui.css" />
+	<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/'.$version.'/themes/flick/jquery-ui.css" />
+	<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/'.$version.'/themes/hot-sneaks/jquery-ui.css" />
+	<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/'.$version.'/themes/humanity/jquery-ui.css" />
+	<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/'.$version.'/themes/le-frog/jquery-ui.css" />
+	<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/'.$version.'/themes/mint-choc/jquery-ui.css" />
+	<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/'.$version.'/themes/overcast/jquery-ui.css" />
+	<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/'.$version.'/themes/pepper-grinder/jquery-ui.css" />
+	<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/'.$version.'/themes/redmond/jquery-ui.css" />
+	<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/'.$version.'/themes/smoothness/jquery-ui.css" />
+	<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/'.$version.'/themes/south-street/jquery-ui.css" />
+	<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/'.$version.'/themes/start/jquery-ui.css" />
+	<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/'.$version.'/themes/sunny/jquery-ui.css" />
+	<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/'.$version.'/themes/swanky-purse/jquery-ui.css" />
+	<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/'.$version.'/themes/trontastic/jquery-ui.css" />
+	<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/'.$version.'/themes/ui-darkness/jquery-ui.css" />
+	<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/'.$version.'/themes/ui-lightness/jquery-ui.css" />
+	<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/'.$version.'/themes/vader/jquery-ui.css" />
 ';
 	}
 	

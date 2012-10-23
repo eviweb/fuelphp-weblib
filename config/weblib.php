@@ -31,8 +31,13 @@
  */
 
 return array(
-	'jquery'               => 'http://code.jquery.com/jquery.min.js',
-	'jquery-ui-base-uri'   => 'http://code.jquery.com/ui/1.8.24',
+	'jquery'                    => 'http://code.jquery.com/jquery.min.js',
+	'jquery-ui-base-uri'        => 'http://code.jquery.com/ui/',
+	'jquery-ui-default-version' => '1.8.24',
+	'jquery-ui-versions'        => array(
+	    '1.8.24',
+	    '1.9.0',
+	),
 	'jquery-ui-file'       => 'jquery-ui.min.js',
 	'jquery-ui-theme-file' => 'jquery-ui.css',
 	'jquery-ui-themes'     => array(
